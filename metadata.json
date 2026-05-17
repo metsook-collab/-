@@ -1,0 +1,8 @@
+{
+  "name": "Personal Color Analyzer",
+  "description": "Analyzes an uploaded photo using Gemini to determine the user's personal color season and tone.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
