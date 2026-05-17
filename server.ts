@@ -29,7 +29,7 @@ async function startServer() {
       }
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-2.5-flash',
         contents: [
           {
             inlineData: {
@@ -123,7 +123,14 @@ async function startServer() {
         }
       });
 
-      const text = response.text;
+      let text = response.text || '';
+      // Strip markdown code block if present
+      const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+      if (match) {
+        text = match[1];
+      }
+      text = text.trim();
+      
       const parsed = JSON.parse(text);
       res.json(parsed);
     } catch (error: any) {
